@@ -1,301 +1,235 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Mensaje, Mi Red, Mi Impacto</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inteligencia Artificial con Propósito</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #faf7f2;
+      --card-bg: #ffffff;
+      --text-main: #2d3748;
+      --text-muted: #64748b;
+      --primary: #2563eb;
+      --primary-soft: #eff6ff;
+      --accent-coral: #f43f5e;
+      --accent-teal: #0d9488;
+      --accent-amber: #d97706;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    }
 
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        hand: ['Caveat', 'cursive'],
-                    },
-                    colors: {
-                        creamBg: '#FDFBF7',
-                        cardWhite: '#FFFFFF',
-                        slateDark: '#1E293B',
-                        slateBody: '#475569',
-                        mint: '#10B981',
-                        mintLight: '#E6F4EA',
-                        softBlue: '#3B82F6',
-                        blueLight: '#EBF5FF',
-                        coral: '#F43F5E',
-                        coralLight: '#FFF1F2',
-                        amberWarm: '#F59E0B',
-                        amberLight: '#FEF3C7',
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 30px -5px rgba(0, 0, 0, 0.04), 0 4px 12px -2px rgba(0, 0, 0, 0.02)',
-                        'hover': '0 16px 32px -8px rgba(0, 0, 0, 0.06)',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            background-color: #FDFBF7;
-            color: #1E293B;
-        }
-        .tape-accent {
-            position: relative;
-        }
-        .tape-accent::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 50%;
-            transform: translateX(-50%) rotate(-1deg);
-            width: 80px;
-            height: 20px;
-            background: rgba(254, 243, 199, 0.8);
-            border: 1px dashed rgba(245, 158, 11, 0.3);
-            border-radius: 2px;
-            z-index: 10;
-        }
-    </style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .main-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 48px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: var(--primary-soft);
+      color: var(--primary);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #0f172a;
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .intro-text {
+      font-size: 1.125rem;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .feature-card {
+      background-color: var(--bg);
+      padding: 24px;
+      border-radius: 16px;
+      border: 1px solid #f1f5f9;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .feature-card.blue h3 { color: var(--primary); }
+    .feature-card.coral h3 { color: var(--accent-coral); }
+    .feature-card.teal h3 { color: var(--accent-teal); }
+    .feature-card.amber h3 { color: var(--accent-amber); }
+
+    .feature-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .tips-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .tips-list li {
+      background-color: var(--bg);
+      padding: 20px;
+      border-radius: 12px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .icon-box {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .reflection-box {
+      background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+      padding: 32px;
+      border-radius: 16px;
+      border: 1px solid #dbeafe;
+    }
+
+    .reflection-box h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .main-card {
+        padding: 24px;
+      }
+      h1 {
+        font-size: 1.875rem;
+      }
+    }
+  </style>
 </head>
-<body class="font-sans antialiased text-slateDark selection:bg-mintLight selection:text-mint py-10">
+<body>
 
-    <main class="max-w-4xl mx-auto px-4 sm:px-6 space-y-16">
+  <div class="container">
+    <div class="main-card">
+      <span class="badge">Propuesta Digital Educativa</span>
+      
+      <h1>Inteligencia Artificial con Propósito</h1>
+      
+      <p class="intro-text">
+        La Inteligencia Artificial está transformando la forma en que estudiamos, investigamos y nos expresamos en internet, por lo cual es importante aprender a utilizarla de manera responsable, ética y crítica para potenciar nuestro conocimiento sin perder nuestro toque humano, auténtico y propio.
+      </p>
 
-        <!-- 1. ENCABEZADO DE LECTURA PRINCIPAL -->
-        <section class="text-center space-y-6 pt-4">
-            
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-mintLight text-mint text-xs font-bold border border-mint/20">
-                <i data-lucide="heart" class="w-3.5 h-3.5 text-mint"></i>
-                <span>Construyendo entornos digitales sanos y positivos</span>
-            </div>
+      <div class="grid">
+        <div class="feature-card blue">
+          <h3>🤖 Tema Principal</h3>
+          <p>Uso ético y consciente de las herramientas de Inteligencia Artificial en nuestras tareas escolares y creadoras del día a día.</p>
+        </div>
 
-            <h1 class="text-3xl sm:text-5xl font-extrabold text-slateDark leading-tight tracking-tight">
-                Mi mensaje, mi red, <br class="hidden sm:inline" />
-                <span class="text-mint underline decoration-amberWarm/40 decoration-wavy">mi impacto</span>
-            </h1>
+        <div class="feature-card coral">
+          <h3>🎯 Propósito</h3>
+          <p>Orientar a estudiantes y jóvenes sobre el uso correcto de la tecnología, promoviendo el pensamiento crítico y el respeto a la autoría.</p>
+        </div>
 
-            <p class="text-base sm:text-lg text-slateBody max-w-2xl mx-auto leading-relaxed">
-                Las redes sociales son espacios para conectar y expresarnos donde no solo consumimos información, sino que también podemos crear hábitos seguros para usar las plataformas con empatía, responsabilidad y propósito social.
-            </p>
+        <div class="feature-card teal">
+          <h3>👥 Audiencia</h3>
+          <p>Comunidad escolar, compañeros de clase, profesores y familias interesadas en aprender a convivir sanamente con la IA.</p>
+        </div>
 
-            <div class="pt-4 max-w-md mx-auto">
-                <div class="bg-amberLight/70 border border-amberWarm/30 p-4 rounded-2xl tape-accent shadow-sm">
-                    <p class="font-hand text-2xl text-slateDark font-bold leading-snug">
-                        "Pequeñas publicaciones también generan grandes cambios"
-                    </p>
-                </div>
-            </div>
+        <div class="feature-card amber">
+          <h3>💡 Mensaje Central</h3>
+          <p>La inteligencia artificial es un copiloto para tus ideas, no un reemplazo para tu mente, pensamiento propio ni voz personal.</p>
+        </div>
+      </div>
 
-        </section>
+      <h2 class="section-title">Recomendaciones para un Uso Ético</h2>
 
-        <!-- 2. RIESGOS A PREVENIR -->
-        <section class="space-y-6">
-            
-            <div class="text-center space-y-2 max-w-xl mx-auto">
-                <span class="text-xs font-bold uppercase tracking-wider text-coral">Prevención Consciente</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-slateDark">¿Qué debemos prevenir en las redes?</h2>
-                <p class="text-xs sm:text-sm text-slateBody">
-                    Conocer los principales problemas nos ayuda a identificarlos a tiempo, evitando situaciones que puedan afectar nuestro bienestar o el de los demás.
-                </p>
-            </div>
+      <ul class="tips-list">
+        <li>
+          <span class="icon-box">🔍</span>
+          <div>
+            <strong>Verifica siempre la información:</strong> La IA puede cometer errores o inventar datos, por eso siempre debemos consultar fuentes reales y confiables antes de compartir cualquier respuesta.
+          </div>
+        </li>
+        <li>
+          <span class="icon-box">✍️</span>
+          <div>
+            <strong>Dale tu propio estilo y voz:</strong> Utiliza las respuestas de la IA como un borrador o guía inicial, pero edita, reescribe y aporta tus propias reflexiones para que el trabajo sea verdaderamente tuyo.
+          </div>
+        </li>
+        <li>
+          <span class="icon-box">🛡️</span>
+          <div>
+            <strong>Protege tus datos personales:</strong> Nunca compartas nombres completos, contraseñas, fotos privadas ni información sensible en las herramientas de IA abiertas.
+          </div>
+        </li>
+        <li>
+          <span class="icon-box">🤝</span>
+          <div>
+            <strong>Aporta transparencia y honestidad:</strong> Si utilizas Inteligencia Artificial para investigar o estructurar un trabajo, reconócelo con madurez y menciona cómo te ayudó en tu proceso.
+          </div>
+        </li>
+      </ul>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                
-                <div class="bg-cardWhite p-6 rounded-2xl border border-slate-200/80 shadow-soft space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-coralLight text-coral flex items-center justify-center font-bold">
-                        <i data-lucide="file-question" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="font-bold text-base text-slateDark">Desinformación y Noticias Falsas</h3>
-                    <p class="text-xs text-slateBody leading-relaxed">
-                        Surge al compartir contenidos no verificados sin revisar las fuentes, difundiendo rumores rápidamente por impulso y generando confusión en temas importantes para la comunidad.
-                    </p>
-                </div>
+      <div class="reflection-box">
+        <h3>Reflexión Final</h3>
+        <p>
+          Las herramientas digitales y la inteligencia artificial son recursos extraordinarios para aprender y crear, pero el verdadero impacto positivo depende siempre de nuestras decisiones, valores, empatía y sentido de responsabilidad compartida dentro de la comunidad.
+        </p>
+      </div>
+    </div>
+  </div>
 
-                <div class="bg-cardWhite p-6 rounded-2xl border border-slate-200/80 shadow-soft space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-coralLight text-coral flex items-center justify-center font-bold">
-                        <i data-lucide="user-x" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="font-bold text-base text-slateDark">Ciberacoso y Falta de Respeto</h3>
-                    <p class="text-xs text-slateBody leading-relaxed">
-                        Ocurre al emitir comentarios hirientes, burlas o exclusión deliberada en entornos digitales, afectando negativamente la salud emocional de las personas involucradas.
-                    </p>
-                </div>
-
-                <div class="bg-cardWhite p-6 rounded-2xl border border-slate-200/80 shadow-soft space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-amberLight text-amberWarm flex items-center justify-center font-bold">
-                        <i data-lucide="clock" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="font-bold text-base text-slateDark">Uso Excesivo de Pantallas</h3>
-                    <p class="text-xs text-slateBody leading-relaxed">
-                        Se presenta cuando pasamos tiempo desmedido frente al teléfono, interfiriendo con el descanso adecuado, los estudios, la actividad física y los momentos familiares.
-                    </p>
-                </div>
-
-                <div class="bg-cardWhite p-6 rounded-2xl border border-slate-200/80 shadow-soft space-y-3">
-                    <div class="w-10 h-10 rounded-xl bg-blueLight text-softBlue flex items-center justify-center font-bold">
-                        <i data-lucide="lock" class="w-5 h-5"></i>
-                    </div>
-                    <h3 class="font-bold text-base text-slateDark">Riesgos en la Privacidad</h3>
-                    <p class="text-xs text-slateBody leading-relaxed">
-                        Pasa al exponer involuntariamente datos personales, ubicaciones en tiempo real o fotografías privadas, poniendo en peligro la seguridad propia y la de nuestro entorno.
-                    </p>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- 3. CONSEJOS Y BUENAS PRÁCTICAS -->
-        <section class="space-y-6">
-            
-            <div class="text-center space-y-2 max-w-xl mx-auto">
-                <span class="text-xs font-bold uppercase tracking-wider text-mint">Guía Práctica</span>
-                <h2 class="text-2xl sm:text-3xl font-bold text-slateDark">Consejos para un uso responsable</h2>
-                <p class="text-xs sm:text-sm text-slateBody">
-                    Recomendaciones sencillas que puedes aplicar cotidianamente para navegar con tranquilidad.
-                </p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-
-                <div class="bg-cardWhite p-6 rounded-2xl border border-slate-200/80 shadow-soft space-y-4">
-                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
-                        <div class="w-8 h-8 rounded-lg bg-mintLight text-mint flex items-center justify-center">
-                            <i data-lucide="send" class="w-4 h-4"></i>
-                        </div>
-                        <h3 class="font-bold text-sm text-slateDark">Antes de Publicar</h3>
-                    </div>
-                    <ul class="space-y-3 text-xs text-slateBody leading-relaxed">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-mint shrink-0 mt-0.5"></i>
-                            <span>Haz una pausa de unos segundos para pensar si lo que vas a decir aporta algo constructivo, revisando siempre la información antes de difundirla y tratando a los demás como te gustaría ser tratado.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-cardWhite p-6 rounded-2xl border border-slate-200/80 shadow-soft space-y-4">
-                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
-                        <div class="w-8 h-8 rounded-lg bg-coralLight text-coral flex items-center justify-center">
-                            <i data-lucide="smile" class="w-4 h-4"></i>
-                        </div>
-                        <h3 class="font-bold text-sm text-slateDark">Salud Mental y Tiempo</h3>
-                    </div>
-                    <ul class="space-y-3 text-xs text-slateBody leading-relaxed">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-coral shrink-0 mt-0.5"></i>
-                            <span>Establece límites claros con momentos libres de pantallas para descansar, evitando comparar tu vida diaria con lo que otros muestran y pausando notificaciones antes de dormir.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="bg-cardWhite p-6 rounded-2xl border border-slate-200/80 shadow-soft space-y-4">
-                    <div class="flex items-center gap-3 border-b border-slate-100 pb-3">
-                        <div class="w-8 h-8 rounded-lg bg-blueLight text-softBlue flex items-center justify-center">
-                            <i data-lucide="shield" class="w-4 h-4"></i>
-                        </div>
-                        <h3 class="font-bold text-sm text-slateDark">Protege tu Privacidad</h3>
-                    </div>
-                    <ul class="space-y-3 text-xs text-slateBody leading-relaxed">
-                        <li class="flex items-start gap-2">
-                            <i data-lucide="check-circle-2" class="w-4 h-4 text-softBlue shrink-0 mt-0.5"></i>
-                            <span>Mantén tus cuentas privadas para controlar quién ve tus contenidos, evitando compartir direcciones, colegios, rutas de transporte o contraseñas personales.</span>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- 4. ACCIONES POSITIVAS -->
-        <section class="space-y-6">
-            
-            <div class="bg-mintLight/50 border border-mint/20 rounded-3xl p-8 sm:p-10 space-y-6">
-                <div class="max-w-2xl space-y-2">
-                    <span class="text-xs font-bold uppercase tracking-wider text-mint">Crea Impacto</span>
-                    <h2 class="text-2xl sm:text-3xl font-bold text-slateDark">¿Cómo aportar valor a tu comunidad?</h2>
-                    <p class="text-xs sm:text-sm text-slateBody">
-                        Pasar de ser un espectador a convertirse en un creador con impacto positivo es un compromiso diario que transforma nuestro entorno digital.
-                    </p>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
-                    
-                    <div class="bg-cardWhite p-5 rounded-2xl border border-slate-200/60 shadow-sm space-y-2">
-                        <div class="w-8 h-8 rounded-lg bg-mint text-white flex items-center justify-center font-bold text-xs">
-                            1
-                        </div>
-                        <h3 class="font-bold text-sm text-slateDark">Diálogo Respetuoso</h3>
-                        <p class="text-xs text-slateBody leading-relaxed">
-                            Promueve conversaciones amables y constructivas, escuchando opiniones variadas y compartiendo argumentos sin faltar al respeto a quienes piensan distinto.
-                        </p>
-                    </div>
-
-                    <div class="bg-cardWhite p-5 rounded-2xl border border-slate-200/60 shadow-sm space-y-2">
-                        <div class="w-8 h-8 rounded-lg bg-mint text-white flex items-center justify-center font-bold text-xs">
-                            2
-                        </div>
-                        <h3 class="font-bold text-sm text-slateDark">Contenido de Utilidad</h3>
-                        <p class="text-xs text-slateBody leading-relaxed">
-                            Aprovecha tus publicaciones para recomendar libros, proyectos comunitarios, arte o reflexiones útiles que sirvan a la convivencia escolar y social.
-                        </p>
-                    </div>
-
-                    <div class="bg-cardWhite p-5 rounded-2xl border border-slate-200/60 shadow-sm space-y-2">
-                        <div class="w-8 h-8 rounded-lg bg-mint text-white flex items-center justify-center font-bold text-xs">
-                            3
-                        </div>
-                        <h3 class="font-bold text-sm text-slateDark">Apoyo y Denuncia</h3>
-                        <p class="text-xs text-slateBody leading-relaxed">
-                            Acompaña a quienes sufran ataques virtuales brindando palabras positivas, reportando de manera responsable publicaciones que promuevan la discriminación o la violencia.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-
-        </section>
-
-        <!-- 5. REFLEXIÓN FINAL -->
-        <section class="pt-4">
-            <div class="bg-slateDark text-white rounded-3xl p-8 sm:p-12 text-center space-y-6 shadow-soft">
-                
-                <div class="w-12 h-12 rounded-2xl bg-mint text-white flex items-center justify-center mx-auto text-xl font-bold">
-                    ✨
-                </div>
-
-                <div class="space-y-3">
-                    <span class="text-xs font-bold uppercase tracking-widest text-mint">Reflexión Final</span>
-                    <h2 class="text-xl sm:text-2xl font-bold leading-snug max-w-xl mx-auto">
-                        ¿Cómo puedo utilizar las redes para pasar de consumir contenido a ser un creador que aporta algo positivo a mi entorno?
-                    </h2>
-                </div>
-
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed max-w-lg mx-auto">
-                    Recordemos siempre que una publicación es mucho más que una imagen o un video corto, pues se trata de una valiosa oportunidad para compartir conocimientos, incentivar el diálogo respetuoso y construir transformaciones positivas en nuestra comunidad.
-                </p>
-
-            </div>
-        </section>
-
-    </main>
-
-    <script>
-        window.addEventListener('DOMContentLoaded', () => {
-            lucide.createIcons();
-        });
-    </script>
 </body>
 </html>
